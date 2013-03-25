@@ -1,10 +1,10 @@
-alloc(newmem,2048)
+alloc(newmem,2048) ; Allocating 2kb. That's enough
 label(returnhere)
 label(originalcode)
 label(loop1)
 label(endloop1)
 label(continue)
-alloc(script,4096)
+alloc(script,4096) ; Allocating 4kb for the script.
 label(exit)
 
 script:
@@ -15,34 +15,34 @@ newmem:
 
 
 originalcode:
-cmp byte ptr[eax+3],43
+cmp byte ptr[eax+3],43 ; Original code for ObjSpawn, found inside of the ROM.
 jne continue
-cmp byte ptr[eax+4],72
+cmp byte ptr[eax+4],72 ; This calls up the spawn function, which calls the ObjSpawn function.
 jne continue
 
 pushad
 mov ecx,0
-loop1:
-mov bl,byte ptr[script+ecx]
+loop1: ; Looping this process to keep it up to date.
+mov bl,byte ptr[script+ecx] ; Hijacking the ObjSpawn Task and integrating it into our GUI.
 mov byte ptr [eax+ecx],bl
-add ecx,1
-cmp cl,E6
-jnb endloop1
+add ecx,1 ; Makes a X = 80, Y = 40 GUI.
+cmp cl,E6 ; Color = green.
+jnb endloop1 ; Ends the loop if everything went right. (It will jump back again if it updated)
 jmp loop1
 endloop1:
-popad
+popad      ; Showing it inside of the Emu Screen. 
 continue:
 push edx
 push ecx
 push eax
-push ebx
-call 008D4B20
+push ebx   ; Pushing all registers and checking if everything went right.
+call 008D4B20 ; Calls the Display List, it checks if everything went right and of course it loads all the objects into the GUI.
 
 exit:
-jmp returnhere
+jmp returnhere ; Exit.
 
 00716A1D:
-jmp newmem
+jmp newmem ; Providing freespace.
 nop
 nop
 nop
