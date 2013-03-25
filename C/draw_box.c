@@ -2,7 +2,8 @@
  * This code does draw a two dimensional square directly into memory.
  * This code uses the inline mips assembler, which works pretty good. Maybe this will be a
  * good idea to use in SM64 Black Sun. 
- *
+ */
+
 
 #include <stdio.h>
 #include "mips.h"
