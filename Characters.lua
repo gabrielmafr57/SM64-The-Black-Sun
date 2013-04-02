@@ -152,7 +152,7 @@ function SetupMariosAndTeams()
     lock, Mario = EditContainer("Mario.Data00") 
     Mario.Active = true
     Mario.Name = GetData("User.HumanMario1")
-    Mario.JumpForce = Vector3.new(125,125,125) - Default mario's jump force.
+    Mario.JumpForce = Vector3.new(125,125,125) -- Default mario's jump force.
     Mario.Energy = 200 -- Yes. You are mad now, right?
     Mario.Speed = 100
     Mario.WeaponFuse = 3
@@ -164,7 +164,7 @@ function SetupMariosAndTeams()
     CopyContainer("Yoshi.Data00", "Yoshi.Data01")
     lock, Yoshi = EditContainer("Yoshi.Data01") 
     Yoshi.Name = GetData ("User.HumanYoshi2")
-    Yoshi.JumpForce = Vector3.new(185,185,185) - Yoshi jumps higher, but runs slow. Making him only -50 health weaker.
+    Yoshi.JumpForce = Vector3.new(185,185,185) -- Yoshi jumps higher, but runs slow. Making him only -50 health weaker.
     Yoshi.Energy = 150
     Yoshi.Speed = 100
     Yoshi.Spawn = "HumanYoshi2"
